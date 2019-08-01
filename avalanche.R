@@ -1,17 +1,21 @@
+wd <- as.character(getwd())
+dirstr <- paste0(wd, '/avalanche.RData')
+load(dirstr)
 # DATA STEP
 # Web scraper
-library(XML)
-library(RCurl)
-avalanche.url <- "https://utahavalanchecenter.org/observations?page="
-  all.pages<-0:202
-  avalanche<-NULL
-  for(page in all.pages){
-  this.url<-paste(avalanche.url,page,sep="")
-  this.webpage<-htmlParse(getURL(this.url))
-  thispage.avalanche <- readHTMLTable(this.webpage,which=1,header=TRUE,
-  stringsAsFactors=FALSE)
-  avalanche<-rbind(avalanche,thispage.avalanche)
-}
+# DON'T NEED WEB SCRAPER SINCE I KNOW HAVE IT SAVED TO RDATA FILE
+# library(XML)
+# library(RCurl)
+# avalanche.url <- "https://utahavalanchecenter.org/observations?page="
+#   all.pages<-0:202
+#   avalanche<-NULL
+#   for(page in all.pages){
+#   this.url<-paste(avalanche.url,page,sep="")
+#   this.webpage<-htmlParse(getURL(this.url))
+#   thispage.avalanche <- readHTMLTable(this.webpage,which=1,header=TRUE,
+#   stringsAsFactors=FALSE)
+#   avalanche<-rbind(avalanche,thispage.avalanche)
+# }
 
 avalanche.sl<-subset(avalanche,avalanche$Region=="Salt Lake")
 
